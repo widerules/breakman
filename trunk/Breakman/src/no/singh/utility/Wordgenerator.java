@@ -1,4 +1,4 @@
-package no.progark.utility;
+package no.singh.utility;
 
 public class Wordgenerator {
 
