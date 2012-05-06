@@ -10,7 +10,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.media.MediaPlayer;
+import android.view.MotionEvent;
 
 public class Ball {
 	
@@ -54,8 +57,8 @@ public class Ball {
 	}
 	
 	private void checkWallBounce(){
-		dX = (posX <= 0 || posX >= Screenadapter.width)? dX*-1:dX;
-		dY = (posY <= 0 || posY >= Screenadapter.height)? dY*-1:dY;
+		dX = (posX <= 0 || (posX+image.getWidth()) >= Screenadapter.width)? dX*-1:dX;
+		dY = (posY <= 0 || posY+image.getHeight() >= Screenadapter.height)? dY*-1:dY;
 	}
 	
 	public void draw(Canvas c){
