@@ -1,6 +1,7 @@
 package no.singh.views;
 
 import no.singh.models.Ball;
+import no.singh.utility.FPScalculator;
 import no.singh.utility.Screenadapter;
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,10 +19,11 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 	Thread t = null;
 	SurfaceHolder holder;
 	boolean clearToRun = false;
+	public FPScalculator FPScalc;
 	
 	
-	static boolean first = true;
-	static Ball ball; //initiere her??
+	boolean first = true;
+	Ball ball; //initiere her??
 
 	public GameView(Context context) {
 		super(context);
@@ -48,10 +50,13 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 	}
 	
 	@Override
-	protected void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
+	protected void onDraw(Canvas c) {
+		super.onDraw(c);
 		
-		ball.draw(canvas);
+		c.drawColor(Color.BLUE);
+		ball.draw(c);
+		FPScalc.drawFPS(c);
+		
 	}
 	
 	@Override
@@ -63,8 +68,7 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 			}
 			Canvas c = holder.lockCanvas();
 			if(first)initGameView(c, getContext());
-			onDraw(c); 
-			postInvalidate();
+			onDraw(c);
 			holder.unlockCanvasAndPost(c); 
 		}
 		
@@ -89,18 +93,16 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 		t.start();
 	}
 	
-	private static void initGameView(Canvas c, Context cont){
+	private void initGameView(Canvas c, Context cont){
 		Screenadapter.inititalizeScreenAdapter(c, cont);
 		ball = new Ball();
+		FPScalc = new FPScalculator();
 		first = false;
 	}
 	
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		System.out.println(ball.getX());
-		System.out.println(ball.getY());
-		System.out.println((Screenadapter.width/2) - (ball.getImage().getWidth()/2));
-		System.out.println((Screenadapter.height/2) - (ball.getImage().getHeight()/2));
 		return super.onTouchEvent(event);
 	}
 
