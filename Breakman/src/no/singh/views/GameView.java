@@ -1,5 +1,6 @@
 package no.singh.views;
 
+import no.singh.controllers.ChipController;
 import no.singh.models.Ball;
 import no.singh.utility.FPScalculator;
 import no.singh.utility.Screenadapter;
@@ -9,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,8 +21,8 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 	Thread t = null;
 	SurfaceHolder holder;
 	boolean clearToRun = false;
-	public FPScalculator FPScalc;
-	
+	private FPScalculator FPScalc;
+	private ChipController chipController;
 	
 	boolean first = true;
 	Ball ball; //initiere her??
@@ -54,9 +56,10 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 		super.onDraw(c);
 		
 		c.drawColor(Color.BLUE);
+		chipController.onDraw(c);
 		ball.draw(c);
-		FPScalc.drawFPS(c);
 		
+		FPScalc.drawFPS(c);
 	}
 	
 	@Override
@@ -97,6 +100,7 @@ public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 		Screenadapter.inititalizeScreenAdapter(c, cont);
 		ball = new Ball();
 		FPScalc = new FPScalculator();
+		chipController = new ChipController();
 		first = false;
 	}
 	
