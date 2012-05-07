@@ -30,7 +30,7 @@ public class Ball {
 		posY = (Screenadapter.height/2) - (image.getHeight()/2); //initialize ball in the center of the screen
 		System.out.println("X: " + posX);
 		System.out.println("Y: " + posY);
-		velocity = Values.BALLVELOCITYCONSTANT;
+		velocity = Values.BALL_VELOCITY_CONSTANT;
 		initRandomDirection(); 
 	} 
 	
@@ -76,6 +76,22 @@ public class Ball {
 	
 	public Bitmap getImage(){
 		return image;
+	}
+	
+	public float getTopLeftX(){
+		return posX;
+	}
+	
+	public float getTopLeftY(){
+		return posY;
+	}
+	
+	public float getBottomRightX(){
+		return posX+image.getWidth();
+	}
+	
+	public float getBottomRightY(){
+		return posY+image.getHeight();
 	}
 
 
