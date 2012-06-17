@@ -17,6 +17,10 @@ public class Screenadapter {
 		width = can.getWidth();
 		height = can.getHeight();
 		context = con;
+		Values.setScaledChipWidth();
+		Values.setScaledChipHeight();
+		Values.setChipSpaceWidth();
+		Values.setChipSpaceHeight();
 	}
 	
 	
