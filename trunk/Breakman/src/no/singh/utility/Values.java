@@ -7,7 +7,7 @@ public class Values {
 	public static final float BALL_VELOCITY_CONSTANT = 2f;
 	public static final int CHIPS_ALONG_WIDTH = 8;
 	public static final int CHIPS_ALONG_HEIGHT = 8;
-	public static final float COLLISION_THRESHOLD = 1f;
+	public static final float COLLISION_THRESHOLD = 0.001f;
 	public static float scaledChipWidth;
 	public static float scaledChipHeight;
 	public static float chipSpaceWidth;

@@ -158,6 +158,14 @@ public class Ball {
 	public float getBottomRightY(){
 		return posY+image.getHeight();
 	}
+	
+	public void stop(){
+		velocity = 0;
+		dX = 0;
+		dY = 0;
+		
+		
+	}
 
 
 }

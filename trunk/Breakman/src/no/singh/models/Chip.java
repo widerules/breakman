@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class Chip {
 	
-	private int[] coord; //coordinates of the chipController Grid
+	private int[] coord; //this chips coordinates on the chipController Grid
 	private Bitmap image;
 	private float x;
 	private float y;
@@ -21,11 +21,11 @@ public class Chip {
 	private float[] southWest; //Coordinates of the bottom left corner 
 	private float[] southEast; //Coordinates of the bottom right corner 
 	
-	public Chip(int indexX, int indexY, float posX, float posY, char c, boolean random){
+	public Chip(int indexX, int indexY, float posX, float posY, char c, boolean random){ 
 		setChipColor(c,random);
-		initCoordinates(indexX, indexY);
 		x = posX; 
-		y = posY;
+		y = posY; 
+		initCoordinates(indexX, indexY);
 		alive = true;
 	}
 	
